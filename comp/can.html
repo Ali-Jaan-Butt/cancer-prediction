@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cancer Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+        }
+        h1 {
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input, select {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        .result-box {
+            margin-top: 20px;
+            padding: 20px;
+            border: 2px solid #000;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Cancer Prediction</h1>
+    <form method="post" action='{% url "predict" %}'>
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="age">Age</label>
+            <input type="number" id="age" name="age" required>
+        </div>
+        <div class="form-group">
+            <label for="airPollution">Air Pollution</label>
+            <input type="number" id="airPollution" name="airPollution" required>
+        </div>
+        <div class="form-group">
+            <label for="alcoholUse">Alcohol Use</label>
+            <input type="number" id="alcoholUse" name="alcoholUse" required>
+        </div>
+        <div class="form-group">
+            <label for="dustAllergy">Dust Allergy</label>
+            <input type="number" id="dustAllergy" name="dustAllergy" required>
+        </div>
+        <div class="form-group">
+            <label for="occupationalHazards">Occupational Hazards</label>
+            <input type="number" id="occupationalHazards" name="occupationalHazards" required>
+        </div>
+        <div class="form-group">
+            <label for="geneticRisk">Genetic Risk</label>
+            <input type="number" id="geneticRisk" name="geneticRisk" required>
+        </div>
+        <div class="form-group">
+            <label for="chronicLungDisease">Chronic Lung Disease</label>
+            <input type="number" id="chronicLungDisease" name="chronicLungDisease" required>
+        </div>
+        <div class="form-group">
+            <label for="fatigue">Fatigue</label>
+            <input type="number" id="fatigue" name="fatigue" required>
+        </div>
+        <div class="form-group">
+            <label for="weightLoss">Weight Loss</label>
+            <input type="number" id="weightLoss" name="weightLoss" required>
+        </div>
+        <div class="form-group">
+            <label for="shortnessOfBreath">Shortness of Breath</label>
+            <input type="number" id="shortnessOfBreath" name="shortnessOfBreath" required>
+        </div>
+        <div class="form-group">
+            <label for="wheezing">Wheezing</label>
+            <input type="number" id="wheezing" name="wheezing" required>
+        </div>
+        <div class="form-group">
+            <label for="swallowingDifficulty">Swallowing Difficulty</label>
+            <input type="number" id="swallowingDifficulty" name="swallowingDifficulty" required>
+        </div>
+        <div class="form-group">
+            <label for="clubbingOfFingerNails">Clubbing of Finger Nails</label>
+            <input type="number" id="clubbingOfFingerNails" name="clubbingOfFingerNails" required>
+        </div>
+        <div class="form-group">
+            <label for="frequentCold">Frequent Cold</label>
+            <input type="number" id="frequentCold" name="frequentCold" required>
+        </div>
+        <div class="form-group">
+            <label for="dryCough">Dry Cough</label>
+            <input type="number" id="dryCough" name="dryCough" required>
+        </div>
+        <div class="form-group">
+            <label for="snoring">Snoring</label>
+            <input type="number" id="snoring" name="snoring" required>
+        </div>
+        <div class="form-group">
+            <label for="balancedDiet">Balanced Diet</label>
+            <input type="number" id="balanced_diet" name="balanced_diet" required>
+        </div>
+        <div class="form-group">
+            <label for="obesty">Obesity</label>
+            <input type="number" id="obesty" name="obesty" required>
+        </div>
+        <div class="form-group">
+            <label for="smoking">Smoking</label>
+            <input type="number" id="smoking" name="smoking" required>
+        </div>
+        <div class="form-group">
+            <label for="passiveSmoker">Passive Smoker</label>
+            <input type="number" id="passive_smoker" name="passive_smoker" required>
+        </div>
+        <div class="form-group">
+            <label for="chestPain">Chest Pain</label>
+            <input type="number" id="chest_pain" name="chest_pain" required>
+        </div>
+        <div class="form-group">
+            <label for="coughingOfBlood">Coughing of Blood</label>
+            <input type="number" id="coughing_of_blood" name="coughing_of_blood" required>
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+    {% if messages %}
+        <div style="display: flex; align-items: center; justify-content: center; height: 100%; width: 100%;">
+            {% for message in messages %}
+                <div style="padding: 15px; background-color: #121212; color: #fff; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); max-width: 500px; text-align: center;">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+</div>
+
+<script>
+    document.getElementById('cancerPredictionForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        // Process form data here
+        // For now, just display a dummy result
+        document.getElementById('resultBox').textContent = 'Cancer Prediction Result: Positive/Negative';
+    });
+</script>
+
+</body>
+</html>
